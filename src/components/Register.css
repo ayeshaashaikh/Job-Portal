@@ -1,70 +1,95 @@
-/* src/components/Register.css */
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background-color: #f3f4f6;
 }
 
-/* Register Container */
-.register-container {
-    max-width: 500px;
-    margin: 50px auto; /* Center the form */
-    padding: 20px;
-    background-color: #f9f9f9; /* Light background */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+.register-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to right, #4b6cb7, #182848);
 }
 
-/* Title Styles */
-.register-container h2 {
-    text-align: center;
-    color: navy; /* Navy color for title */
-    margin-bottom: 20px; /* Space below title */
+.register-box {
+  width: 400px;
+  padding: 40px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-top: 20px;
 }
 
-/* Form Styles */
+.register-box h2 {
+  color: #182848;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
 .register-form {
-    display: flex;
-    flex-direction: column; /* Column layout for form */
+  display: flex;
+  flex-direction: column;
 }
 
-/* Form Group Styles */
-.form-group {
-    margin-bottom: 15px; /* Space between form groups */
+.input-container {
+  position: relative;
+  margin-bottom: 15px;
 }
 
-/* Label Styles */
-.form-group label {
-    font-weight: bold; /* Bold labels */
-    margin-bottom: 5px; /* Space below labels */
+.input-container input[type="text"],
+.input-container input[type="email"],
+.input-container input[type="date"],
+.input-container input[type="tel"],
+.nationality-group select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
 }
 
-/* Input Styles */
-.form-group input,
-.form-group select {
-    padding: 10px; /* Padding for inputs */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 5px; /* Rounded edges */
-    width: 100%; /* Full width */
+.input-container input:focus,
+.nationality-group select:focus {
+  border-color: #182848;
 }
 
-/* Gender Options Styles */
-.gender-options {
-    display: flex;
-    gap: 15px; /* Space between options */
+.gender-group {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
 }
 
-/* Submit Button Styles */
+.gender-group label {
+  color: #182848;
+  font-weight: bold;
+}
+
 .submit-button {
-    padding: 10px;
-    background-color: navy; /* Navy button */
-    color: white; /* White text */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded edges */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 16px; /* Button font size */
-    transition: background-color 0.3s; /* Smooth transition */
+  background-color: #182848;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .submit-button:hover {
-    background-color: #ffcc00; /* Change on hover */
+  background-color: #4b6cb7;
+}
+
+@media (max-width: 500px) {
+  .register-box {
+      width: 90%;
+      padding: 30px;
+  }
+
+  .gender-group {
+      flex-direction: column;
+      align-items: flex-start;
+  }
 }
