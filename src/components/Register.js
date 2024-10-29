@@ -1,66 +1,156 @@
-// src/components/Register.js
-import React from 'react';
-import './Register.css'; // Import CSS for styling
+
+import React, { useState } from 'react';
+import './Register.css';
 
 const Register = () => {
+  const [formValues, setFormValues] = useState({
+    fullName: '',
+    address: '',
+    email: '',
+    dob: '',
+    phone: '',
+    gender: '',
+    nationality: ''
+  });
+  
+  const nationalityOptions = [
+    'Indian', 'American', 'British', 'Canadian', 'Australian', 'German',
+    'French', 'Chinese', 'Japanese', 'Brazilian', 'Mexican', 'Italian',
+    'Spanish', 'Russian', 'South African'
+  ];
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Register:', formValues);
+  };
+
   return (
-    <div className="register-container">
-      <h2>Create Your Account</h2>
-      <form className="register-form">
-        <div className="form-group">
-          <label htmlFor="fullName">Full Name:</label>
-          <input type="text" id="fullName" required placeholder="Enter your full name" />
-        </div>
+    <div className="register-background">
+      {/* Navbar Section */}
+      <nav className="navbar">
+        <h1 className="navbar-title">Job Connect </h1>
+        <ul className="navbar-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+        </ul>
+      </nav>
 
-        <div className="form-group">
-          <label htmlFor="address">Address:</label>
-          <input type="text" id="address" required placeholder="Enter your address" />
-        </div>
+      {}
+      <div className="register-box">
+        <h2>Welcome! Create Your Account</h2>
+        <form className="register-form" onSubmit={handleSubmit}>
+          <div className="input-container">
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Full Name"
+              value={formValues.fullName}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="email">Email ID:</label>
-          <input type="email" id="email" required placeholder="Enter your email" />
-        </div>
+          <div className="input-container">
+            <input
+              type="text"
+              name="address"
+              placeholder="Address"
+              value={formValues.address}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="dob">Date of Birth:</label>
-          <input type="date" id="dob" required />
-        </div>
+          <div className="input-container">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email ID"
+              value={formValues.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="phone">Phone No:</label>
-          <input type="tel" id="phone" required placeholder="Enter your phone number" />
-        </div>
+          <div className="input-container">
+            <input
+              type="date"
+              name="dob"
+              placeholder="Date of Birth"
+              value={formValues.dob}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Gender:</label>
-          <div className="gender-options">
+          <div className="input-container">
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone No"
+              value={formValues.phone}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="input-container gender-group">
+            <label>Gender:</label>
             <label>
-              <input type="radio" name="gender" value="male" required /> Male
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                onChange={handleChange}
+                required
+              /> Male
             </label>
             <label>
-              <input type="radio" name="gender" value="female" required /> Female
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                onChange={handleChange}
+                required
+              /> Female
             </label>
             <label>
-              <input type="radio" name="gender" value="other" required /> Other
+              <input
+                type="radio"
+                name="gender"
+                value="other"
+                onChange={handleChange}
+                required
+              /> Other
             </label>
           </div>
-        </div>
 
-        <div className="form-group">
-          <label htmlFor="nationality">Nationality:</label>
-          <select id="nationality" required>
-            <option value="">Select your nationality</option>
-            <option value="indian">Indian</option>
-            <option value="american">American</option>
-            <option value="british">British</option>
-            <option value="canadian">Canadian</option>
-            {/* Add more nationalities as needed */}
-          </select>
-        </div>
+          <div className="input-container nationality-group">
+            <select
+              name="nationality"
+              value={formValues.nationality}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>Select Nationality</option>
+              {nationalityOptions.map((nationality) => (
+                <option key={nationality} value={nationality.toLowerCase()}>
+                  {nationality}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <button type="submit" className="submit-button">Submit</button>
-      </form>
+          <button type="submit" className="submit-button">Create Account</button>
+        </form>
+      </div>
     </div>
   );
 };
